@@ -37,6 +37,18 @@ function checkCollision(rock) {
     // FIXME: The rock is 20 pixel's wide -- how do we get the right edge?
     const rockRightEdge = positionToInteger(rock.style.left)+20;
 
+
+    if(rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge) {
+      endGame()
+    }
+    if(rockLeftEdge>dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
+      endGame()
+    }
+
+    if(rockLeftEdge<dodgerRightEdge && rockRightEdge>dodgerRightEdge){
+      endGame()
+    }
+
     if (false /**
                * Think about it -- what's happening here?
                * There's been a collision if one of three things is true:
@@ -53,11 +65,6 @@ function checkCollision(rock) {
 }
 
 
-function sayHello() {
-//  alert('hello')
-}
-
-const myInterval = setInterval(sayHello, 1000)
 
 function createRock(x) {
   const rock = document.createElement('div')
@@ -93,14 +100,15 @@ function createRock(x) {
      * the GAME, we want to move it again.
      */
      if (positionToInteger(rock.style.top)<GAME_HEIGHT) {
-    //  alert("gets")
        function step() {
          rock.style.top = `${top2 += 2}px`
-     //      alert(rock.style.top)
         moveRock()
        }
        window.requestAnimationFrame(step)
-//       moveRock()
+     }
+
+     if (positionToInteger(rock.style.top) > 320) {
+       checkCollision(rock)
      }
     /**
      * But if the rock *has* reached the bottom of the GAME,
@@ -132,10 +140,10 @@ function createRock(x) {
  * Finally, alert "YOU LOSE!" to the player.
  */
 function endGame() {
-  alert("YOU LOSE!")
+//  rock.remove()
+  var gameInterval = null;
+  console.log("YOU LOSE!")
 }
-
-
 
 
 
