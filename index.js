@@ -145,18 +145,13 @@ function moveDodgerLeft() {
 }
 
 
-
-let LEFT_POS = DODGER.style.left;
-
 function moveDodgerRight() {
 
+  let top = 180
 
-let top = 180
+  DODGER.style.left = `${top += 2}px`
 
-      DODGER.style.left = `${top += 2}px`
-    //  top+=2;
-
-    window.requestAnimationFrame(moveDodgerRight)
+  //window.requestAnimationFrame(moveDodgerRight)
 //
 
   // implement me!
