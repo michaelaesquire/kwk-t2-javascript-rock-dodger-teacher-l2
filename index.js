@@ -74,7 +74,9 @@ function createRock(x) {
    * seems like a good pace.)
    */
   function moveRock() {
-    // implement me!
+
+
+
     // (use the comments below to guide you!)
     /**
      * If a rock collides with the DODGER,
@@ -109,6 +111,7 @@ function createRock(x) {
  * Finally, alert "YOU LOSE!" to the player.
  */
 function endGame() {
+  alert("YOU LOSE!")
 }
 
 
@@ -124,14 +127,13 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
-      const key = parseInt(e.detail || e.which);
-//alert(LEFT_ARROW)
-      if (key === LEFT_ARROW) {
-        moveDodgerLeft()
-      }
-      if (key === RIGHT_ARROW) {
-        moveDodgerRight()
-      }
+    const key = parseInt(e.detail || e.which);
+    if (key === LEFT_ARROW) {
+      moveDodgerLeft()
+    }
+    if (key === RIGHT_ARROW) {
+      moveDodgerRight()
+    }
 }
 
 
@@ -142,18 +144,30 @@ function moveDodgerLeft() {
    * This function should move DODGER to the left
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
+   var top = positionToInteger(DODGER.style.left);
+
+   function step() {
+     DODGER.style.left = `${top -= 4}px`
+
+   }
+
+   window.requestAnimationFrame(step)
+   // implement me!
+
+
+
 }
 
 
 function moveDodgerRight() {
 
-  let top = 180
+  var top = positionToInteger(DODGER.style.left);
 
-  DODGER.style.left = `${top += 2}px`
+  function step() {
+    DODGER.style.left = `${top += 4}px`
 
-  //window.requestAnimationFrame(moveDodgerRight)
-//
-
+  }
+  window.requestAnimationFrame(step)
   // implement me!
   /**
    * This function should move DODGER to the right
