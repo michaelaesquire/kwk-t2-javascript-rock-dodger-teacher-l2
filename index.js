@@ -148,11 +148,13 @@ function endGame() {
 
 
 function moveDodger(e) {
+  const dodgerLeftEdge = positionToInteger(DODGER.style.left)
+  const dodgerRightEdge = positionToInteger(DODGER.style.left)+40;
   const key = parseInt(e.detail || e.which);
-  if (key === LEFT_ARROW) {
+  if (key === LEFT_ARROW && dodgerLeftEdge>0) {
     moveDodgerLeft()
   }
-  if (key === RIGHT_ARROW) {
+  if (key === RIGHT_ARROW&& dodgerRightEdge<GAME_WIDTH) {
     moveDodgerRight()
   }
 }
