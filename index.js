@@ -12,6 +12,7 @@ const START = document.getElementById('start')
 
 var gameInterval = null
 
+
 /**
  * Be aware of what's above this line,
  * but all of your work should happen below.
@@ -110,6 +111,10 @@ function createRock(x) {
 function endGame() {
 }
 
+
+
+
+
 function moveDodger(e) {
   // implement me!
   /**
@@ -119,7 +124,17 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
+      const key = parseInt(e.detail || e.which);
+//alert(LEFT_ARROW)
+      if (key === LEFT_ARROW) {
+        moveDodgerLeft()
+      }
+      if (key === RIGHT_ARROW) {
+        moveDodgerRight()
+      }
 }
+
+
 
 function moveDodgerLeft() {
   // implement me!
@@ -129,7 +144,21 @@ function moveDodgerLeft() {
    */
 }
 
+
+
+let LEFT_POS = DODGER.style.left;
+
 function moveDodgerRight() {
+
+
+let top = 180
+
+      DODGER.style.left = `${top += 2}px`
+    //  top+=2;
+
+    window.requestAnimationFrame(moveDodgerRight)
+//
+
   // implement me!
   /**
    * This function should move DODGER to the right
